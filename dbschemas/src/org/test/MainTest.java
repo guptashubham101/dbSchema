@@ -70,10 +70,12 @@ return null;
                     	 String temp1=(String)getCellValue(cell,0);
                     	 if(temp1.equals(temp))
                     	 {
+                    		 System.out.println("1");
                     		 j=1;
                     	 }
                     	 else
                     	 {
+                    		 System.out.println("2");
                     		 j=0;
                     	 }
                     }
@@ -148,7 +150,7 @@ return null;
                 	session.save(student1);
                 }     
                 subject.setStudentInformation(student1);
-               // temp=student1.getEnrollmentNo();
+                temp=student1.getEnrollmentNo();
               //  System.out.println(temp);
                /* student.getMarks().add(marks);
                 marks.setStudentInformation(student);
