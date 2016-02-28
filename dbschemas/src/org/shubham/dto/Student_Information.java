@@ -16,7 +16,7 @@ import javax.persistence.TemporalType;
 public class Student_Information {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO) 
+	@GeneratedValue
 	private Integer id;
 	
 	private String name;

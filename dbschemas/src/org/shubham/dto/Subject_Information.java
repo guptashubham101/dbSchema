@@ -10,7 +10,7 @@ import javax.persistence.OneToOne;
 public class Subject_Information {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO) 
+	@GeneratedValue
 	private Integer id;
 	
 	private Double credits;

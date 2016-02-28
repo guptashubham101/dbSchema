@@ -40,6 +40,7 @@ return null;
 	}
 	public static void main(String[] args) {
 	String temp=null;
+	Student_Information student1 = null;
 	int j=0;
 		try
 		{
@@ -50,7 +51,6 @@ return null;
             rowIterator.next();
             while(rowIterator.hasNext())
             {
-            	j=0;
                 Row row = rowIterator.next();
                 //For each row, iterate through each columns
                 Iterator<Cell> cellIterator = row.cellIterator();
@@ -72,38 +72,50 @@ return null;
                     	 {
                     		 j=1;
                     	 }
+                    	 else
+                    	 {
+                    		 j=0;
+                    	 }
                     }
         
                     switch(columnIndex) 
                     {
                
                         case 1:
+                        	if(j!=1)
                         	 student.setName((String) getCellValue(cell,0));
                         	 break;
                         case 2:
+                        	if(j!=1)
                         	student.setEnrollmentNo((String) getCellValue(cell,0));
                             break;
                         case 3:
+                        	if(j!=1)
                         	student.setFatherName((String) getCellValue(cell,0));
                             break;
                         case 4:
+                        	if(j!=1)
                         	student.setMotherName((String) getCellValue(cell,0));
                             break;
                         case 5:
-                        	
+                        	if(j!=1)
                         	student.setDateOfBirth((Double) getCellValue(cell,1));
                         	
                             break;
                         case 6:
+                        	if(j!=1)
                         	student.setProgram((String) getCellValue(cell,0));
                             break;
                         case 7:
+                        	if(j!=1)
                         	student.setBatch((String) getCellValue(cell,0));
                             break;
                         case 8:
+                        	if(j!=1)
                         	student.setSemester((String) getCellValue(cell,0));
                             break;
                         case 9:
+                        	if(j!=1)
                         	student.setYear((Double) getCellValue(cell,0));
                             break;
                         case 10:
@@ -125,29 +137,29 @@ return null;
                     }
                    
                 }
-            
-                student.getSubjects().add(subject);
-                subject.setStudentInformation(student);
-                
-                
-                Student_Information student1=student;
-                temp=student1.getEnrollmentNo();
-                System.out.println(temp);
+                SessionFactory sessionfactory=new Configuration().configure().buildSessionFactory();
+        	    
+        		Session session=sessionfactory.openSession();
+        		session.beginTransaction();
+                if(j==0)
+                {
+                	student1=student;
+                	student1.getSubjects().add(subject);
+                	session.save(student1);
+                }     
+                subject.setStudentInformation(student1);
+               // temp=student1.getEnrollmentNo();
+              //  System.out.println(temp);
                /* student.getMarks().add(marks);
                 marks.setStudentInformation(student);
               
                 subject.setStudentmarks(marks);*/
                
-                SessionFactory sessionfactory=new Configuration().configure().buildSessionFactory();
-        	    
-        		Session session=sessionfactory.openSession();
-        		session.beginTransaction();
-        		if(j==0)
-        		{
-                session.save(student);
-        		}
+                
+        		
                 session.save(marks);
                 session.save(subject);
+                
             	session.getTransaction().commit();
         		session.close();
             }

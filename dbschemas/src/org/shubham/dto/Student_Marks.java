@@ -9,7 +9,7 @@ import javax.persistence.ManyToOne;
 public class Student_Marks {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO) 
+	@GeneratedValue
 	private Integer id;
 	
 	private Double totalMarks;
