@@ -2,15 +2,10 @@ package org.shubham.dto;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 @Entity
 public class Student_Information {
@@ -23,8 +18,8 @@ public class Student_Information {
 	private String enrollmentNo;
 	private String fatherName;
 	private String motherName;
-	//@Temporal(TemporalType.TIMESTAMP)
-	private Double dateOfBirth;
+	//@Temporal(TemporalType.DATE)
+	private String dateOfBirth;
 	private String program;
 	private String batch;
 	private String semester;
@@ -34,7 +29,7 @@ public class Student_Information {
 	private Collection<Subject_Information> subjects=new ArrayList<Subject_Information>();
 	
 
-	/*@OneToMany(mappedBy="studentInformationMarks")
+	@OneToMany(mappedBy="studentInformationMarks")
 	private Collection<Student_Marks> marks=new ArrayList<Student_Marks>();
 	
 
@@ -44,7 +39,7 @@ public class Student_Information {
 	}
 	public void setMarks(Collection<Student_Marks> marks) {
 		this.marks = marks;
-	}*/
+	}
 	public Collection<Subject_Information> getSubjects() {
 		return subjects;
 	}
@@ -81,10 +76,10 @@ public class Student_Information {
 	public void setMotherName(String motherName) {
 		this.motherName = motherName;
 	}
-	public Double getDateOfBirth() {
+	public String getDateOfBirth() {
 		return dateOfBirth;
 	}
-	public void setDateOfBirth(Double dateOfBirth) {
+	public void setDateOfBirth(String dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
 	public String getProgram() {
@@ -111,6 +106,7 @@ public class Student_Information {
 	public void setYear(Double year) {
 		this.year = year;
 	}
+	
 	
 	
 }

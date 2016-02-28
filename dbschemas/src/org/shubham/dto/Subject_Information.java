@@ -1,7 +1,6 @@
 package org.shubham.dto;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
@@ -20,7 +19,7 @@ public class Subject_Information {
 	@ManyToOne
 	private Student_Information studentInformation;
 	
-	/*@OneToOne
+	@OneToOne
 	private Student_Marks studentmarks;
 	
 	
@@ -29,7 +28,7 @@ public class Subject_Information {
 	}
 	public void setStudentmarks(Student_Marks studentmarks) {
 		this.studentmarks = studentmarks;
-	}*/
+	}
 	
 	public Student_Information getStudentInformation() {
 		return studentInformation;
