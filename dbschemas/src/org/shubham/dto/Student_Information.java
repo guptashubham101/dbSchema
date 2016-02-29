@@ -1,7 +1,8 @@
 package org.shubham.dto;
 
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -26,24 +27,24 @@ public class Student_Information {
 	private Double year;
 	
 	@OneToMany(mappedBy="studentInformation")
-	private Collection<Subject_Information> subjects=new ArrayList<Subject_Information>();
+	private List<Subject_Information> subjects=new ArrayList<Subject_Information>();
 	
 
 	@OneToMany(mappedBy="studentInformationMarks")
-	private Collection<Student_Marks> marks=new ArrayList<Student_Marks>();
+	private List<Student_Marks> marks=new ArrayList<Student_Marks>();
 	
 
 	
-	public Collection<Student_Marks> getMarks() {
+	public List<Student_Marks> getMarks() {
 		return marks;
 	}
-	public void setMarks(Collection<Student_Marks> marks) {
+	public void setMarks(List<Student_Marks> marks) {
 		this.marks = marks;
 	}
-	public Collection<Subject_Information> getSubjects() {
+	public List<Subject_Information> getSubjects() {
 		return subjects;
 	}
-	public void setSubjects(Collection<Subject_Information> subjects) {
+	public void setSubjects(List<Subject_Information> subjects) {
 		this.subjects = subjects;
 	}
 	public Integer getId() {
@@ -108,5 +109,7 @@ public class Student_Information {
 	}
 	
 	
+	 
+
 	
 }

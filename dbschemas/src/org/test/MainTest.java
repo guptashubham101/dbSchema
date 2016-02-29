@@ -20,6 +20,7 @@ import org.shubham.dto.Subject_Information;
 
 
 public class MainTest {
+	
 	private static Object getCellValue(Cell cell,int k) {
 		
 		switch (cell.getCellType()) {
@@ -31,18 +32,19 @@ public class MainTest {
 	        return cell.getBooleanCellValue();
 	 
 	    case Cell.CELL_TYPE_NUMERIC:
-	    	if(k==0)
+	    if(k==0)
 	    		return cell.getNumericCellValue();
 	    	else
 	    		return cell.getDateCellValue();
 	    }
-		return null;		
+		return null;
 	}
 	public static void main(String[] args) {
 		  
 	String temp=null,flag=null;
 	Student_Information student1 = null;
-	int j=0,m=0;
+	int j=0;
+	int m=0;
 	
 		try
 		{	
@@ -112,14 +114,18 @@ public class MainTest {
                         	student.setMotherName((String) getCellValue(cell,0));
                             break;
                         case 5:
-                        	if(j!=1)
+                        	if((j!=1)&&(m<0))
                         	{
+                        		m++;
                         		Date p=((Date) getCellValue(cell,1));
                         		String DATE_FORMAT_NOW = "dd-MM-yyyy";
                         		SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT_NOW);
                         		String stringDate = sdf.format(p);
+                        		System.out.println(stringDate + "hello");
                         		student.setDateOfBirth(stringDate); 
+                        		//student.setDateOfBirth((Double) getCellValue(cell,0));*/
                         	}
+                        	
                             break;
                         case 6:
                         	if(j!=1)
@@ -156,8 +162,11 @@ public class MainTest {
                     }
                    
                 }
-                SessionFactory sessionfactory=new Configuration().configure().buildSessionFactory(); 
-          		Session session=sessionfactory.openSession();
+                
+                	
+            
+                SessionFactory sessionFactory=SessionUtil.getSessionFactory();
+          		Session session=sessionFactory.openSession();
           		session.beginTransaction();	
                 if(j==0)
                 {
@@ -166,17 +175,18 @@ public class MainTest {
                 	student1.getMarks().add(marks);
                 	session.save(student1);
                 }     
-                m++;
+              
                 subject.setStudentInformation(student1);
                 temp=student1.getEnrollmentNo();
                 flag=student1.getName();
                 marks.setStudentInformation(student1);
                 subject.setStudentmarks(marks);
-                
+               
                 session.save(marks);
                 session.save(subject);
                 session.getTransaction().commit();
         		session.close();
+               
             }
             
             workbook.close();
