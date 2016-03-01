@@ -114,14 +114,13 @@ public class MainTest {
                         	student.setMotherName((String) getCellValue(cell,0));
                             break;
                         case 5:
-                        	if((j!=1)&&(m<0))
+                        	if((j!=1)&&(m<12))
                         	{
                         		m++;
                         		Date p=((Date) getCellValue(cell,1));
                         		String DATE_FORMAT_NOW = "dd-MM-yyyy";
                         		SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT_NOW);
                         		String stringDate = sdf.format(p);
-                        		System.out.println(stringDate + "hello");
                         		student.setDateOfBirth(stringDate); 
                         		//student.setDateOfBirth((Double) getCellValue(cell,0));*/
                         	}
@@ -186,7 +185,7 @@ public class MainTest {
                 session.save(subject);
                 session.getTransaction().commit();
         		session.close();
-               
+              
             }
             
             workbook.close();
