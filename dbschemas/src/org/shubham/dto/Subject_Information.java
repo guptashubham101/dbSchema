@@ -22,7 +22,6 @@ public class Subject_Information {
 	@OneToOne
 	private Student_Marks studentmarks;
 	
-	
 	public Student_Marks getStudentmarks() {
 		return studentmarks;
 	}
