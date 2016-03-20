@@ -1,14 +1,15 @@
 package org.test;
 
-import static org.junit.Assert.*;
-
 import org.junit.Test;
 
 public class MainTestTest {
 
+	/*@Before
+	public void setUp() throws Exception {
+	}*/
+
 	@Test
 	public void testMain() {
-		//fail("Not yet implemented");
 		String[] args = new String[1];
 		MainTest.main(args);
 	}
